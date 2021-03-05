@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.app-font {
+    font-family: 'Dancing Script', cursive;
+}
+
+.btn {        
+    border: 2px solid #8A1580;
+    background-color: #8A1580;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 1rem 3rem;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-decoration: none;
+
+    &:hover {
+        color: #8A1580;
+        background: #fff;
+    }
+}

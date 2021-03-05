@@ -1,0 +1,15 @@
+<h1 class="app-font">Restaurant Reviews:</h1>
+
+<div *ngIf="!reviews || reviews.length == 0" class="no-reviews">
+    There are no restaurant reviews yet.
+</div>
+
+<div *ngIf="reviews && reviews.length > 0" class="review-list">
+    <div *ngFor="let r of reviews" class="review-wrapper">
+        <div class="title-wrapper app-font">
+            <h2>{{r.restaurantName}}</h2>
+            <app-stars [(rating)]="r.rating" [id]="r.reviewId" [disabled]="true"></app-stars>
+        </div>
+        <div>{{r.review}}</div>
+    </div>
+</div>

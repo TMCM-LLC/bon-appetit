@@ -7,7 +7,7 @@ nav {
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
     outline: none;
 }
@@ -42,5 +42,12 @@ nav {
     a:hover::after, a:focus::after {
         opacity: 1;
         transform: translateY(0px);
+    }
+}
+
+
+@media (max-width: 760px) {
+    .nav-links a.hide-small {
+        display: none;
     }
 }

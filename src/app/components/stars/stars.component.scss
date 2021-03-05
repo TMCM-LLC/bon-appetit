@@ -1,7 +1,7 @@
 
 .rating {
     float: left;
-
+    width: 150px;
 
     &:not(:checked) > input {
         position:absolute;

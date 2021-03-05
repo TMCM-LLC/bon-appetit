@@ -40,9 +40,31 @@ export class ReviewListComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.reviewService.addReview(result).subscribe(() => {
-                    this.loadReviews
+                    this.loadReviews();
                 });
             }
         });
-      }
+    }
+
+    openEditReview(review: Review): void {
+        const reviewCopy = {
+            reviewId: review.reviewId,
+            review: review.review,
+            restaurantName: review.restaurantName,
+            rating: review.rating
+        };
+
+        const dialogRef = this.dialog.open(ReviewDialogComponent, {
+            width: '400px',
+            data: reviewCopy
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.reviewService.editReview(result).subscribe(() => {
+                    this.loadReviews();
+                });
+            }
+        });
+    }
 }

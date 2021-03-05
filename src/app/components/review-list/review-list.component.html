@@ -10,7 +10,7 @@
 </div>
 
 <div *ngIf="reviews && reviews.length > 0" class="review-list">
-    <div *ngFor="let r of reviews" class="review-wrapper">
+    <div *ngFor="let r of reviews" class="review-wrapper" (click)="openEditReview(r)">
         <div class="title-wrapper app-font">
             <h2>{{r.restaurantName}}</h2>
             <app-stars [(rating)]="r.rating" [id]="r.reviewId" [disabled]="true"></app-stars>

@@ -48,6 +48,12 @@ export class ReviewService {
         return of();
     }
 
+    editReview(review: Review) {
+        let r = this.reviews.findIndex(r => r.reviewId == review.reviewId);
+        this.reviews[r] = review;
+        return of();
+    }
+
     removeReview(id: number) {
         const idx = this.reviews.findIndex(x => x.reviewId == id);
         return of(this.reviews.splice(idx, 1));

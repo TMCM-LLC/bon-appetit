@@ -1,7 +1,12 @@
-<h1 class="app-font">Restaurant Reviews:</h1>
+<div class="header">
+    <h1 class="app-font">Restaurant Reviews:</h1>
+    <button (click)="openNewReview()" mat-mini-fab color="primary" class="add-review" aria-label="Add new review">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
 
 <div *ngIf="!reviews || reviews.length == 0" class="no-reviews">
-    There are no restaurant reviews yet.
+    There are no restaurant reviews.
 </div>
 
 <div *ngIf="reviews && reviews.length > 0" class="review-list">
@@ -11,5 +16,6 @@
             <app-stars [(rating)]="r.rating" [id]="r.reviewId" [disabled]="true"></app-stars>
         </div>
         <div>{{r.review}}</div>
+        <div class="remove-review" (click)="removeReview(r.reviewId)">x</div>
     </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Review } from 'src/app/models/review';
 import { ReviewService } from 'src/app/services/review.service';
+import { ReviewDialogComponent } from '../review-dialog/review-dialog.component';
 
 @Component({
   selector: 'app-review-list',
@@ -10,12 +12,37 @@ import { ReviewService } from 'src/app/services/review.service';
 export class ReviewListComponent implements OnInit {
     reviews: Review[];
 
-    constructor(private reviewService: ReviewService) { }
+    constructor(private reviewService: ReviewService, public dialog: MatDialog) { }
 
     ngOnInit(): void {
         this.reviews = [];
+        this.loadReviews();
+    }
+
+    loadReviews() {
         this.reviewService.getReviews().subscribe(reviews => {
 			this.reviews = reviews;
         });
     }
+
+    removeReview(id: number) {
+        this.reviewService.removeReview(id).subscribe(() => {
+            this.loadReviews();
+        });
+    }
+
+    openNewReview(): void {
+        const dialogRef = this.dialog.open(ReviewDialogComponent, {
+            width: '400px',
+            data: new Review()
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.reviewService.addReview(result).subscribe(() => {
+                    this.loadReviews
+                });
+            }
+        });
+      }
 }

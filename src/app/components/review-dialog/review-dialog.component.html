@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>New Review</h1>
+<div mat-dialog-content>
+    <form class="review-form" #reviewForm="ngForm">
+        <app-stars name="rating" [(rating)]="review.rating"></app-stars>
+    
+        <mat-form-field class="">
+            <mat-label>Restaurant Name</mat-label>
+            <input
+                required 
+                matInput 
+                name="restaurant" 
+                [(ngModel)]="review.restaurantName" 
+            />
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Review</mat-label>
+            <textarea 
+                required 
+                matInput 
+                name="review" 
+                [(ngModel)]="review.review"
+            ></textarea>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" [disabled]="reviewForm.invalid" [mat-dialog-close]="review" cdkFocusInitial>Submit</button>
+</div>

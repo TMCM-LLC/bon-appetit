@@ -16,6 +16,6 @@
             <app-stars [(rating)]="r.rating" [id]="r.reviewId" [disabled]="true"></app-stars>
         </div>
         <div>{{r.review}}</div>
-        <div class="remove-review" (click)="removeReview(r.reviewId)">x</div>
+        <div class="remove-review" (click)="removeReview(r.reviewId); $event.stopPropagation()">x</div>
     </div>
 </div>

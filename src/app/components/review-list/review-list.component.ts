@@ -34,7 +34,7 @@ export class ReviewListComponent implements OnInit {
     openNewReview(): void {
         const dialogRef = this.dialog.open(ReviewDialogComponent, {
             width: '400px',
-            data: new Review()
+            data: new Review({})
         });
     
         dialogRef.afterClosed().subscribe(result => {
@@ -52,7 +52,7 @@ export class ReviewListComponent implements OnInit {
             review: review.review,
             restaurantName: review.restaurantName,
             rating: review.rating
-        };
+        } as Review;
 
         const dialogRef = this.dialog.open(ReviewDialogComponent, {
             width: '400px',
